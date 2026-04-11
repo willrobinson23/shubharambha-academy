@@ -5,13 +5,14 @@ import { Target, Eye, Award, BookOpen, Trophy, Medal } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
 } from "@/components/ui/carousel";
+import { color } from "framer-motion";
 
 const About = () => {
   const { data: teamMembers, isLoading: loadingTeam } = useQuery({
@@ -50,6 +51,9 @@ const About = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-center text-white drop-shadow-md">
               About <span className="text-primary-foreground drop-shadow-lg">Shubharambha</span> Academy
             </h1>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-center text-white/95 drop-shadow-md mt-2">
+              Previously known as <span className="text-primary-foreground drop-shadow-lg" style={{ color: "yellow" }}>Lyceum International Model School</span>
+            </h2>
             <p className="text-white/90 text-center mt-4 max-w-2xl mx-auto text-lg drop-shadow">
               Established in 2052 B.S., Shubharambha Academy has been a beacon of quality education in Chitwan,
               nurturing generations of confident, compassionate, and capable leaders.
@@ -159,7 +163,7 @@ const About = () => {
             </div>
           ) : teamMembers && teamMembers.length > 0 ? (
             <div className="max-w-5xl mx-auto relative px-12 md:px-0">
-              <Carousel 
+              <Carousel
                 opts={{ align: "start", loop: teamMembers.length >= 4 }}
                 className="w-full"
               >
@@ -216,7 +220,7 @@ const About = () => {
             </div>
           ) : supportStaff && supportStaff.length > 0 ? (
             <div className="max-w-5xl mx-auto relative px-12 md:px-0">
-              <Carousel 
+              <Carousel
                 opts={{ align: "start", loop: supportStaff.length >= 4 }}
                 className="w-full"
               >

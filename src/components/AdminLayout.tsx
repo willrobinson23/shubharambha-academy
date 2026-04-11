@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Link, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import {
-  LayoutDashboard, Calendar, GraduationCap, MessageSquare, Settings, LogOut, Menu, Star, ImagePlus, Users
+  LayoutDashboard, Calendar, GraduationCap, MessageSquare, Settings, LogOut, Menu, Star, ImagePlus, Users, Medal
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,7 @@ const navItems = [
   { label: "Gallery", path: "/admin/gallery", icon: ImagePlus },
   { label: "Teams", path: "/admin/teams", icon: Users },
   { label: "Support Staff", path: "/admin/support-staff", icon: Users },
+  { label: "Achievers", path: "/admin/achievers", icon: Medal },
   { label: "Settings", path: "/admin/settings", icon: Settings },
 ];
 
