@@ -102,6 +102,15 @@ const Index = () => {
     },
   });
 
+  const { data: latestNews } = useQuery({
+    queryKey: ["latest-news"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("news").select("*").order("news_date", { ascending: false }).limit(3);
+      if (error && error.code !== "42P01") throw error;
+      return data || [];
+    },
+  });
+
   const { data: testimonials } = useQuery({
     queryKey: ["testimonials"],
     queryFn: async () => {
@@ -347,6 +356,52 @@ const Index = () => {
             </div>
             <Link to="/events" className="md:hidden mt-6 block">
               <Button variant="outline" className="w-full gap-2">View All Events <ArrowRight className="h-4 w-4" /></Button>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Latest News */}
+      {latestNews && latestNews.length > 0 && (
+        <section className="py-12 sm:py-20 bg-background border-t border-border/50">
+          <div className="container mx-auto px-4">
+            <ScrollReveal>
+              <div className="flex items-center justify-between mb-12">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">Latest <span className="text-primary">News</span></h2>
+                  <p className="text-muted-foreground mt-2">Catch up on our recent announcements and stories.</p>
+                </div>
+                <Link to="/news" className="hidden md:block">
+                  <Button variant="outline" className="gap-2">View All <ArrowRight className="h-4 w-4" /></Button>
+                </Link>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {latestNews.map((item, i) => (
+                <ScrollReveal key={item.id} delay={i * 0.1}>
+                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col border-border/50">
+                    {item.image_url ? (
+                      <div className="h-48 overflow-hidden shrink-0">
+                        <img src={item.image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    ) : (
+                      <div className="h-48 bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center shrink-0">
+                         <BookOpen className="h-12 w-12 text-primary/30" />
+                      </div>
+                    )}
+                    <CardContent className="p-6">
+                      <span className="text-xs font-semibold text-gold uppercase tracking-wider">
+                        {format(new Date(item.news_date), "MMMM d, yyyy")}
+                      </span>
+                      <h3 className="text-lg font-display font-semibold mt-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm mt-2 line-clamp-2">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
+              ))}
+            </div>
+            <Link to="/news" className="md:hidden mt-6 block">
+              <Button variant="outline" className="w-full gap-2">View All News <ArrowRight className="h-4 w-4" /></Button>
             </Link>
           </div>
         </section>

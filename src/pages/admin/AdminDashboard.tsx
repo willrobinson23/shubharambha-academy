@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { AdminLayout } from "@/components/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, GraduationCap, MessageSquare, TrendingUp } from "lucide-react";
+import { Calendar, GraduationCap, MessageSquare, TrendingUp, Star, Mail } from "lucide-react";
 import { format } from "date-fns";
 
 const AdminDashboard = () => {
@@ -26,6 +26,22 @@ const AdminDashboard = () => {
     queryKey: ["admin-messages-count"],
     queryFn: async () => {
       const { data } = await supabase.from("contact_messages").select("id");
+      return data || [];
+    },
+  });
+
+  const { data: recentMessages } = useQuery({
+    queryKey: ["admin-recent-messages"],
+    queryFn: async () => {
+      const { data } = await supabase.from("contact_messages").select("id, name, email, created_at").order("created_at", { ascending: false }).limit(5);
+      return data || [];
+    },
+  });
+
+  const { data: recentReviews } = useQuery({
+    queryKey: ["admin-recent-reviews"],
+    queryFn: async () => {
+      const { data } = await supabase.from("testimonials").select("id, name, role, created_at").order("created_at", { ascending: false }).limit(5);
       return data || [];
     },
   });
@@ -57,33 +73,85 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        <Card>
-          <CardContent className="p-6">
-            <h2 className="text-lg font-display font-semibold mb-4 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-primary" /> Recent Admissions
-            </h2>
-            {admissions && admissions.length > 0 ? (
-              <div className="space-y-3">
-                {admissions.map(a => (
-                  <div key={a.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                    <div>
-                      <p className="font-medium">{a.student_name}</p>
-                      <p className="text-sm text-muted-foreground">{a.class}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-lg font-display font-semibold mb-4 flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-primary" /> Recent Admissions
+              </h2>
+              {admissions && admissions.length > 0 ? (
+                <div className="space-y-3">
+                  {admissions.map(a => (
+                    <div key={a.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                      <div className="truncate pr-2">
+                        <p className="font-medium truncate">{a.student_name}</p>
+                        <p className="text-sm text-muted-foreground">{a.class}</p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <span className={`text-[10px] sm:text-xs px-2 py-1 rounded-full ${a.status === 'contacted' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                          {a.status}
+                        </span>
+                        <p className="text-xs text-muted-foreground mt-1">{format(new Date(a.created_at), "MMM d")}</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <span className={`text-xs px-2 py-1 rounded-full ${a.status === 'contacted' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                        {a.status}
-                      </span>
-                      <p className="text-xs text-muted-foreground mt-1">{format(new Date(a.created_at), "MMM d")}</p>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground text-sm">No admissions yet.</p>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-lg font-display font-semibold mb-4 flex items-center gap-2">
+                <Mail className="h-5 w-5 text-primary" /> Recent Messages
+              </h2>
+              {recentMessages && recentMessages.length > 0 ? (
+                <div className="space-y-3">
+                  {recentMessages.map(m => (
+                    <div key={m.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                      <div className="truncate pr-2">
+                        <p className="font-medium truncate">{m.name}</p>
+                        <p className="text-sm text-muted-foreground truncate">{m.email}</p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <p className="text-xs text-muted-foreground">{format(new Date(m.created_at), "MMM d")}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-muted-foreground text-sm">No admissions yet.</p>
-            )}
-          </CardContent>
-        </Card>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground text-sm">No recent messages.</p>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-lg font-display font-semibold mb-4 flex items-center gap-2">
+                <Star className="h-5 w-5 text-gold" /> Recent Reviews
+              </h2>
+              {recentReviews && recentReviews.length > 0 ? (
+                <div className="space-y-3">
+                  {recentReviews.map(r => (
+                    <div key={r.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                      <div className="truncate pr-2">
+                        <p className="font-medium truncate">{r.name}</p>
+                        <p className="text-sm text-muted-foreground capitalize">{r.role}</p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <p className="text-xs text-muted-foreground">{format(new Date(r.created_at), "MMM d")}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground text-sm">No recent reviews.</p>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </AdminLayout>
   );

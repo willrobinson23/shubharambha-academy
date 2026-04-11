@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const navItems = [
   { label: "Dashboard", path: "/admin", icon: LayoutDashboard },
   { label: "Events", path: "/admin/events", icon: Calendar },
+  { label: "News", path: "/admin/news", icon: Calendar },
   { label: "Admissions", path: "/admin/admissions", icon: GraduationCap },
   { label: "Messages", path: "/admin/messages", icon: MessageSquare },
   { label: "Reviews", path: "/admin/reviews", icon: Star },

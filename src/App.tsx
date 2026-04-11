@@ -10,12 +10,14 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Academics from "./pages/Academics";
 import Events from "./pages/Events";
+import News from "./pages/News";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Admission from "./pages/Admission";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminEvents from "./pages/admin/AdminEvents";
+import AdminNews from "./pages/admin/AdminNews";
 import AdminAdmissions from "./pages/admin/AdminAdmissions";
 import AdminMessages from "./pages/admin/AdminMessages";
 import AdminSettings from "./pages/admin/AdminSettings";
@@ -40,12 +42,14 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/news" element={<News />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admission" element={<Admission />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/events" element={<AdminEvents />} />
+            <Route path="/admin/news" element={<AdminNews />} />
             <Route path="/admin/admissions" element={<AdminAdmissions />} />
             <Route path="/admin/messages" element={<AdminMessages />} />
             <Route path="/admin/reviews" element={<AdminReviews />} />
