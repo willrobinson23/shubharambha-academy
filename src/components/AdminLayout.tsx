@@ -17,6 +17,7 @@ const navItems = [
   { label: "Reviews", path: "/admin/reviews", icon: Star },
   { label: "Gallery", path: "/admin/gallery", icon: ImagePlus },
   { label: "Teams", path: "/admin/teams", icon: Users },
+  { label: "Support Staff", path: "/admin/support-staff", icon: Users },
   { label: "Settings", path: "/admin/settings", icon: Settings },
 ];
 

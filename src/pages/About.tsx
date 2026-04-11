@@ -26,6 +26,19 @@ const About = () => {
     },
   });
 
+  const { data: supportStaff, isLoading: loadingSupport } = useQuery({
+    queryKey: ["support_staff"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("support_staff")
+        .select("*")
+        .order("created_at", { ascending: true });
+      // If table doesnt exist yet, ignore error
+      if (error && error.code !== "42P01") throw error;
+      return data || [];
+    },
+  });
+
   return (
     <PublicLayout>
       {/* Hero */}
@@ -147,10 +160,10 @@ const About = () => {
           ) : teamMembers && teamMembers.length > 0 ? (
             <div className="max-w-5xl mx-auto relative px-12 md:px-0">
               <Carousel 
-                opts={{ align: "start", loop: true }}
+                opts={{ align: "start", loop: teamMembers.length >= 4 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-4">
+                <CarouselContent className={`-ml-4 ${teamMembers.length < 4 ? 'justify-center' : ''}`}>
                   {teamMembers.map((member, i) => (
                     <CarouselItem key={member.id} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                       <ScrollReveal delay={Math.min(i, 4) * 0.1}>
@@ -172,6 +185,63 @@ const About = () => {
                   ))}
                 </CarouselContent>
                 {teamMembers.length > 4 && (
+                  <div className="hidden md:block">
+                    <CarouselPrevious className="-left-16 h-12 w-12 border-2 hover:bg-primary hover:text-white" />
+                    <CarouselNext className="-right-16 h-12 w-12 border-2 hover:bg-primary hover:text-white" />
+                  </div>
+                )}
+              </Carousel>
+            </div>
+          ) : null}
+        </div>
+      </section>
+
+      {/* Support Staff */}
+      <section className="py-12 sm:py-16 bg-secondary/30">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold">Our <span className="text-primary">Support Staff</span></h2>
+              <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                The backbone of our academy, ensuring a smooth and safe environment for our students.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {loadingSupport ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {[...Array(4)].map((_, i) => (
+                <Skeleton key={i} className="aspect-[3/4] rounded-lg w-full" />
+              ))}
+            </div>
+          ) : supportStaff && supportStaff.length > 0 ? (
+            <div className="max-w-5xl mx-auto relative px-12 md:px-0">
+              <Carousel 
+                opts={{ align: "start", loop: supportStaff.length >= 4 }}
+                className="w-full"
+              >
+                <CarouselContent className={`-ml-4 ${supportStaff.length < 4 ? 'justify-center' : ''}`}>
+                  {supportStaff.map((member, i) => (
+                    <CarouselItem key={member.id} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                      <ScrollReveal delay={Math.min(i, 4) * 0.1}>
+                        <Card className="overflow-hidden group hover:shadow-xl transition-all border-border h-full">
+                          <div className="aspect-[3/4] w-full overflow-hidden">
+                            <img
+                              src={member.image_url}
+                              alt={member.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                          <CardContent className="p-4 text-center bg-card">
+                            <h3 className="font-semibold text-lg line-clamp-1">{member.name}</h3>
+                            <p className="text-sm text-primary font-medium mt-1 line-clamp-1">{member.role}</p>
+                          </CardContent>
+                        </Card>
+                      </ScrollReveal>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {supportStaff.length > 4 && (
                   <div className="hidden md:block">
                     <CarouselPrevious className="-left-16 h-12 w-12 border-2 hover:bg-primary hover:text-white" />
                     <CarouselNext className="-right-16 h-12 w-12 border-2 hover:bg-primary hover:text-white" />
