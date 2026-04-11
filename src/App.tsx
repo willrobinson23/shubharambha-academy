@@ -28,7 +28,16 @@ import AdminSupportStaff from "./pages/admin/AdminSupportStaff";
 import AdminAchievers from "./pages/admin/AdminAchievers";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // Data remains fresh for 5 minutes
+      gcTime: 15 * 60 * 1000, // Keep in garbage collection cache for 15 mins
+      refetchOnWindowFocus: false, // Prevents aggressive refetching when switching tabs/apps on mobile
+      retry: 2, // Only retry twice on slow mobile connections before giving up
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

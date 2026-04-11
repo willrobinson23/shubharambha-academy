@@ -441,17 +441,17 @@ const Index = () => {
                 <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Celebrating the outstanding academic success of our brilliant students.</p>
               </div>
             </ScrollReveal>
-            <div className="max-w-6xl mx-auto relative px-12 md:px-0">
+            <div className="max-w-6xl mx-auto relative">
               <Carousel 
-                opts={{ align: "center", loop: topAchievers.length > 4 }} 
+                opts={{ align: "center", loop: topAchievers.length > 4, breakpoints: { '(max-width: 767px)': { containScroll: false } } }} 
                 className="w-full"
               >
-                <CarouselContent className={`-ml-2 md:-ml-4 ${topAchievers.length < 4 ? "justify-center" : ""}`}>
+                <CarouselContent className={topAchievers.length < 4 ? "md:justify-center -ml-2 md:-ml-4" : "-ml-2 md:-ml-4"}>
                   {topAchievers.map((achiever, i) => (
-                    <CarouselItem key={achiever.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                    <CarouselItem key={achiever.id} className="pl-2 md:pl-4 basis-[85%] md:basis-1/2 lg:basis-1/4">
                       <ScrollReveal delay={Math.min(i, 4) * 0.1} className="h-full">
                         <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 group border-border/50 flex flex-col">
-                          <div className="aspect-[4/5] w-full overflow-hidden bg-muted relative shrink-0">
+                          <div className="aspect-square md:aspect-[4/5] w-full overflow-hidden bg-muted relative shrink-0">
                             {achiever.image_url ? (
                               <img src={achiever.image_url} alt={achiever.name} className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                             ) : (
@@ -498,20 +498,20 @@ const Index = () => {
               </div>
             </ScrollReveal>
 
-            <div className="max-w-6xl mx-auto relative px-12 md:px-0">
+            <div className="max-w-6xl mx-auto relative">
               <Carousel
                 opts={{ align: "start", loop: true }}
                 className="w-full"
               >
                 <CarouselContent className="-ml-2 md:-ml-4">
                   {testimonials.map((t, i) => (
-                    <CarouselItem key={t.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={t.id} className="pl-2 md:pl-4 basis-[85%] md:basis-1/2 lg:basis-1/3">
                       <ScrollReveal delay={Math.min(i, 3) * 0.1} className="h-full">
                         <Card className="hover:shadow-xl transition-shadow duration-300 h-full border-border/50">
                           <CardContent className="p-6 md:p-8 flex flex-col h-full">
                             <Quote className="h-10 w-10 text-gold/30 mb-4 shrink-0" />
-                            <p className="text-muted-foreground italic leading-relaxed text-lg flex-1">"{t.quote}"</p>
-                            <div className="mt-6 pt-6 border-t flex items-center justify-between shrink-0">
+                            <p className="text-muted-foreground italic leading-relaxed text-lg">"{t.quote}"</p>
+                            <div className="mt-3 pt-3 md:mt-6 md:pt-6 border-t flex items-center justify-between shrink-0">
                               <div>
                                 <p className="font-semibold text-foreground text-lg">{t.name}</p>
                                 <p className="text-sm text-primary font-medium capitalize mt-0.5">{t.role}</p>
