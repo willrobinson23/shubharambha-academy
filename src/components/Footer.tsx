@@ -10,7 +10,7 @@ export const Footer = () => (
             <span className="font-display text-xl font-bold">Shubharambha Academy</span>
           </div>
           <p className="text-sm opacity-75 leading-relaxed mb-6">
-            Nurturing young minds with quality education, strong values, and a commitment to excellence since 2008.
+            Nurturing young minds with quality education, strong values, and a commitment to excellence since 2052 B.S.
           </p>
           <div className="flex items-center gap-4">
             <a href="https://www.facebook.com/profile.php?id=100057425052347" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-[#1877F2] hover:text-white hover:opacity-100 opacity-75 transition-all">
