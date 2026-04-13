@@ -111,13 +111,13 @@ export const Footer = () => {
 
       {/* Teacher Verification Dialog */}
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="sm:max-w-md rounded-2xl">
+        <DialogContent className="w-[calc(100%-2.5rem)] max-w-sm sm:max-w-md rounded-2xl p-5 sm:p-6">
           <DialogHeader className="text-center sm:text-center">
-            <div className="mx-auto mb-3 h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <Download className="h-7 w-7 text-primary" />
+            <div className="mx-auto mb-2 sm:mb-3 h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Download className="h-6 w-6 sm:h-7 sm:w-7 text-primary" />
             </div>
-            <DialogTitle className="text-xl">Teacher Access Only</DialogTitle>
-            <DialogDescription className="text-base mt-2">
+            <DialogTitle className="text-lg sm:text-xl">Teacher Access Only</DialogTitle>
+            <DialogDescription className="text-sm sm:text-base mt-2">
               This app is exclusively for teachers of Shubharambha Academy. Are you a teacher?
             </DialogDescription>
           </DialogHeader>
@@ -125,7 +125,7 @@ export const Footer = () => {
             <Button
               id="confirm-teacher-btn"
               onClick={handleDownload}
-              className="w-full py-3 text-base bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 shadow-md"
+              className="w-full py-3 text-sm sm:text-base h-auto whitespace-normal bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 shadow-md"
             >
               Yes, I am a teacher of Shubharambha Academy
             </Button>
@@ -133,7 +133,7 @@ export const Footer = () => {
               id="decline-teacher-btn"
               variant="outline"
               onClick={() => setShowDialog(false)}
-              className="w-full py-3 text-base"
+              className="w-full py-3 text-sm sm:text-base"
             >
               No
             </Button>
