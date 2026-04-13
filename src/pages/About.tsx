@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { PublicLayout } from "@/components/PublicLayout";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Eye, Award, BookOpen, Trophy, Medal } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -15,6 +19,21 @@ import {
 import { color } from "framer-motion";
 
 const About = () => {
+  const [showDashboardDialog, setShowDashboardDialog] = useState(false);
+  const [password, setPassword] = useState("");
+  const [errorText, setErrorText] = useState("");
+
+  const handleDashboardLogin = () => {
+    if (password === "LIMS123") {
+      window.open("https://shubharambhateacherdashboard.netlify.app", "_blank");
+      setShowDashboardDialog(false);
+      setPassword("");
+      setErrorText("");
+    } else {
+      setErrorText("Incorrect password. Please try again.");
+    }
+  };
+
   const { data: teamMembers, isLoading: loadingTeam } = useQuery({
     queryKey: ["team_members"],
     queryFn: async () => {
@@ -48,19 +67,69 @@ const About = () => {
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-center text-white drop-shadow-md">
-              About <span className="text-primary-foreground drop-shadow-lg">Shubharambha</span> Academy
-            </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-center text-white/95 drop-shadow-md mt-2">
-              Previously known as <span className="text-primary-foreground drop-shadow-lg" style={{ color: "yellow" }}>Lyceum International Model School</span>
-            </h2>
-            <p className="text-white/90 text-center mt-4 max-w-2xl mx-auto text-lg drop-shadow">
-              Established in 2052 B.S., Shubharambha Academy has been a beacon of quality education in Chitwan,
-              nurturing generations of confident, compassionate, and capable leaders.
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white drop-shadow-md">
+                About <span className="text-primary-foreground drop-shadow-lg">Shubharambha</span> Academy
+              </h1>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-display font-semibold text-white/95 drop-shadow-md mt-1">
+                Previously known as <span className="text-primary-foreground drop-shadow-lg" style={{ color: "yellow" }}>Lyceum International Model School</span>
+              </h2>
+              <p className="text-white/90 mt-2 max-w-2xl mx-auto text-sm sm:text-base drop-shadow">
+                Established in 2052 B.S., Shubharambha Academy has been a beacon of quality education in Chitwan,
+                nurturing generations of confident, compassionate, and capable leaders.
+              </p>
+              <div className="mt-4 flex flex-col items-center justify-center space-y-1.5">
+                <span className="text-white/90 text-[10px] sm:text-xs font-medium uppercase tracking-wider bg-black/40 px-2.5 py-0.5 rounded-full border border-white/20">For Teachers Only</span>
+                <Button onClick={() => setShowDashboardDialog(true)} className="font-semibold px-6 py-1 h-8 text-xs sm:text-sm bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg">
+                  Teacher's Dashboard
+                </Button>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
+
+      <Dialog open={showDashboardDialog} onOpenChange={(open) => {
+        setShowDashboardDialog(open);
+        if (!open) {
+          setPassword("");
+          setErrorText("");
+        }
+      }}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Teacher's Dashboard Access</DialogTitle>
+            <DialogDescription>
+              Please enter the secure password to access the teacher's dashboard.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col space-y-4 py-4">
+            <Input
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                if (errorText) setErrorText("");
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleDashboardLogin();
+                }
+              }}
+            />
+            {errorText && <p className="text-destructive text-sm font-medium">{errorText}</p>}
+          </div>
+          <DialogFooter className="sm:justify-end">
+            <Button variant="outline" onClick={() => setShowDashboardDialog(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleDashboardLogin}>
+              Enter Dashboard
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Mission & Vision */}
       <section className="py-12 sm:py-16">
