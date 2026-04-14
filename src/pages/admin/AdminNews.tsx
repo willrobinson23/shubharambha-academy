@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { deleteStorageFile } from "@/utils/storage-helpers";
 import { AdminLayout } from "@/components/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -102,13 +103,7 @@ const AdminNews = () => {
       const { error } = await supabase.from("news").delete().eq("id", item.id);
       if (error) throw error;
 
-      if (item.image_url && item.image_url.includes("supabase.co")) {
-        const parts = item.image_url.split("/");
-        const fileName = parts.pop();
-        if (fileName) {
-          await supabase.storage.from("events").remove([fileName]);
-        }
-      }
+      await deleteStorageFile(item.image_url, "events");
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["admin-news"] });
