@@ -216,6 +216,11 @@ const Index = () => {
                     <GraduationCap className="h-5 w-5" /> Apply Now
                   </Button>
                 </Link>
+                <a href="https://shubharambhateacherdashboard.netlify.app/#/guardianLogin" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg">
+                    <Shield className="h-5 w-5" /> Guardian's Portal
+                  </Button>
+                </a>
                 <Link to="/contact">
                   <Button size="lg" variant="outline" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 flex items-center justify-center bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm">
                     Visit School
