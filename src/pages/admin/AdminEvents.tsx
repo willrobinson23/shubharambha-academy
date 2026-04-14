@@ -98,9 +98,17 @@ const AdminEvents = () => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const { error } = await supabase.from("events").delete().eq("id", id);
+    mutationFn: async (item: any) => {
+      const { error } = await supabase.from("events").delete().eq("id", item.id);
       if (error) throw error;
+
+      if (item.image_url && item.image_url.includes("supabase.co")) {
+        const parts = item.image_url.split("/");
+        const fileName = parts.pop();
+        if (fileName) {
+          await supabase.storage.from("events").remove([fileName]);
+        }
+      }
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["admin-events"] });
@@ -226,7 +234,7 @@ const AdminEvents = () => {
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction onClick={() => deleteMutation.mutate(event.id)}>Delete</AlertDialogAction>
+                          <AlertDialogAction onClick={() => deleteMutation.mutate(event)}>Delete</AlertDialogAction>
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>

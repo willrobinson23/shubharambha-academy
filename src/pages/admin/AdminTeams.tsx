@@ -80,9 +80,17 @@ const AdminTeams = () => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const { error } = await supabase.from("team_members").delete().eq("id", id);
+    mutationFn: async (item: any) => {
+      const { error } = await supabase.from("team_members").delete().eq("id", item.id);
       if (error) throw error;
+
+      if (item.image_url && item.image_url.includes("supabase.co")) {
+        const parts = item.image_url.split("/");
+        const fileName = parts.pop();
+        if (fileName) {
+          await supabase.storage.from("gallery").remove([fileName]);
+        }
+      }
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["admin-teams"] });
@@ -274,7 +282,7 @@ const AdminTeams = () => {
                       </AlertDialogHeader>
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => deleteMutation.mutate(member.id)}>
+                        <AlertDialogAction onClick={() => deleteMutation.mutate(member)}>
                           Delete
                         </AlertDialogAction>
                       </AlertDialogFooter>
