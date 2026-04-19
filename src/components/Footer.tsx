@@ -16,8 +16,8 @@ export const Footer = () => {
   const handleDownload = () => {
     setShowDialog(false);
     const link = document.createElement("a");
-    link.href = "/ShubharambhaSchool.apk";
-    link.download = "ShubharambhaSchool.apk";
+    link.href = "/app-normal-release.apk"; // Path to your APK file in the public folder
+    link.download = "app-normal-release.apk"; // Path to your APK file in the public folder
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
