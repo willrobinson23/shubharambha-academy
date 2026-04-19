@@ -1,20 +1,7 @@
-import { useState } from "react";
 import { GraduationCap, Phone, Mail, MapPin, Facebook, Download } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
-  const [showDialog, setShowDialog] = useState(false);
-
   const handleDownload = () => {
-    setShowDialog(false);
     const link = document.createElement("a");
     link.href = "/app-normal-release.apk"; // Path to your APK file in the public folder
     link.download = "app-normal-release.apk"; // Path to your APK file in the public folder
@@ -96,7 +83,7 @@ export const Footer = () => {
         <div className="block md:hidden mt-8">
           <button
             id="download-app-btn"
-            onClick={() => setShowDialog(true)}
+            onClick={handleDownload}
             className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-primary to-orange-500 text-white font-semibold text-base shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             <Download className="h-5 w-5" />
@@ -109,37 +96,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Teacher Verification Dialog */}
-      <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="w-[calc(100%-2.5rem)] max-w-sm sm:max-w-md rounded-2xl p-5 sm:p-6">
-          <DialogHeader className="text-center sm:text-center">
-            <div className="mx-auto mb-2 sm:mb-3 h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <Download className="h-6 w-6 sm:h-7 sm:w-7 text-primary" />
-            </div>
-            <DialogTitle className="text-lg sm:text-xl">Teacher Access Only</DialogTitle>
-            <DialogDescription className="text-sm sm:text-base mt-2">
-              This app is exclusively for teachers of Shubharambha Academy. Are you a teacher?
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="flex flex-col gap-3 sm:flex-col mt-2">
-            <Button
-              id="confirm-teacher-btn"
-              onClick={handleDownload}
-              className="w-full py-3 text-sm sm:text-base h-auto whitespace-normal bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 shadow-md"
-            >
-              Yes, I am a teacher of Shubharambha Academy
-            </Button>
-            <Button
-              id="decline-teacher-btn"
-              variant="outline"
-              onClick={() => setShowDialog(false)}
-              className="w-full py-3 text-sm sm:text-base"
-            >
-              No
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </footer>
   );
 };
