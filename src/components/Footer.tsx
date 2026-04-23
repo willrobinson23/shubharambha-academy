@@ -56,7 +56,7 @@ export const Footer = () => {
               <li>Primary School (1-5)</li>
               <li>Middle School (6-8)</li>
               <li>Secondary School (9-10)</li>
-              <li>Higher Secondary (+2) (Coming Soon)</li>
+              <li>Higher Secondary (+2) (Rolling out soon)</li>
             </ul>
           </div>
 

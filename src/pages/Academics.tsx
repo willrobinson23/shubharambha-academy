@@ -9,7 +9,7 @@ const programs = [
   { icon: BookOpen, title: "Primary School", grades: "Class 1-5", desc: "Building strong foundations in reading, writing, math, and critical thinking." },
   { icon: GraduationCap, title: "Middle School", grades: "Class 6-8", desc: "Expanding horizons with science, social studies, and extracurricular activities." },
   { icon: GraduationCap, title: "Secondary School", grades: "Class 9-10 (SEE)", desc: "Intensive preparation for the SEE examinations with focused subject training." },
-  { icon: GraduationCap, title: "Higher Secondary (+2)", grades: "Class 11-12", desc: "Science and Management streams with career-focused education and guidance." },
+  { icon: GraduationCap, title: "Higher Secondary (+2) (Rolling out soon)", grades: "Class 11-12", desc: "Science and Management streams with career-focused education and guidance." },
 ];
 
 const facilities = [

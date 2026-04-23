@@ -185,7 +185,7 @@ const Index = () => {
           <div className="max-w-3xl">
             <ScrollReveal>
               <span className="inline-block bg-gold/90 text-black font-semibold text-xs px-3 py-1 sm:text-sm sm:px-4 sm:py-1.5 rounded-full mb-3 md:mb-6 shadow-lg">
-                📚 Admission Open 2083
+                📚 Admission Open 2083 | +2 Rolling out soon
               </span>
             </ScrollReveal>
             <ScrollReveal delay={0.05}>
