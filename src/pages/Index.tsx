@@ -63,7 +63,7 @@ const whyChooseUs = [
   { icon: BookOpen, title: "Expert Faculty", desc: "Highly qualified and experienced teachers dedicated to student success." },
   { icon: Shield, title: "Safe Environment", desc: "CCTV-monitored campus with a focus on child safety and well-being." },
   { icon: Award, title: "Top Results", desc: "Consistently outstanding SEE results and national-level achievements." },
-  { icon: Users, title: "Small Class Sizes", desc: "Personalized attention with an optimal teacher-to-student ratio." },
+  { icon: Users, title: "Adjusted Class Sizes", desc: "Personalized attention with an optimal teacher-to-student ratio." },
 ];
 
 const heroImages = [
@@ -415,7 +415,7 @@ const Index = () => {
                       </div>
                     ) : (
                       <div className="h-48 bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center shrink-0">
-                         <BookOpen className="h-12 w-12 text-primary/30" />
+                        <BookOpen className="h-12 w-12 text-primary/30" />
                       </div>
                     )}
                     <CardContent className="p-6">
@@ -442,13 +442,13 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">Our Top <span className="text-primary">Achievers</span></h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">Our Recent Top <span className="text-primary">Achievers</span></h2>
                 <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Celebrating the outstanding academic success of our brilliant students.</p>
               </div>
             </ScrollReveal>
             <div className="max-w-6xl mx-auto relative">
-              <Carousel 
-                opts={{ align: "center", loop: topAchievers.length > 4, breakpoints: { '(max-width: 767px)': { containScroll: false } } }} 
+              <Carousel
+                opts={{ align: "center", loop: topAchievers.length > 4, breakpoints: { '(max-width: 767px)': { containScroll: false } } }}
                 className="w-full"
               >
                 <CarouselContent className={topAchievers.length < 4 ? "md:justify-center -ml-2 md:-ml-4" : "-ml-2 md:-ml-4"}>
