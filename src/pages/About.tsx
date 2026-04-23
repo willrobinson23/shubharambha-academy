@@ -274,7 +274,7 @@ const About = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold">Our <span className="text-primary">Support Staff</span></h2>
+              <h2 className="text-3xl font-display font-bold">Our <span className="text-primary">School Staff</span></h2>
               <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
                 The backbone of our academy, ensuring a smooth and safe environment for our students.
               </p>
