@@ -1,7 +1,7 @@
 import { PublicLayout } from "@/components/PublicLayout";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Card, CardContent } from "@/components/ui/card";
-import { Baby, BookOpen, GraduationCap, FlaskConical, Library, Dumbbell } from "lucide-react";
+import { Baby, BookOpen, GraduationCap, Monitor, Library, Dumbbell, Coffee } from "lucide-react";
 
 const programs = [
   { icon: Baby, title: "Nursery", grades: "Ages 3-5", desc: "A nurturing start with play-based learning, creativity, and social development." },
@@ -13,9 +13,10 @@ const programs = [
 ];
 
 const facilities = [
-  { icon: FlaskConical, title: "Science Labs", desc: "Fully equipped physics, chemistry, and biology labs for practical experiments." },
+  { icon: Monitor, title: "Computer Lab", desc: "Modern computer lab with high-speed internet and latest software for digital literacy." },
   { icon: Library, title: "Library", desc: "A vast collection of textbooks, reference materials, newspapers, and digital resources." },
   { icon: Dumbbell, title: "Sports Facilities", desc: "Football ground, basketball court, indoor games, and regular sports training programs." },
+  { icon: Coffee, title: "Home Friendly Cafeteria", desc: "Healthy, hygienic, and home-like meals prepared with care for our students." },
 ];
 
 const Academics = () => (
@@ -67,7 +68,7 @@ const Academics = () => (
             Our <span className="text-gold">Facilities</span>
           </h2>
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {facilities.map((f, i) => (
             <ScrollReveal key={f.title} delay={i * 0.1}>
               <Card className="text-center hover:shadow-lg transition-shadow h-full">
