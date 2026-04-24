@@ -137,13 +137,22 @@ const Index = () => {
 
   const getStat = (key: string) => {
     const s = stats?.find(s => s.key === key);
-    return s ? parseInt(s.value) : 0;
+    return s ? s.value : "";
   };
+
+  const getStatInt = (key: string) => {
+    const val = getStat(key);
+    return val ? parseInt(val) : 0;
+  };
+
+  const popupActive = getStat("popup_active") === "true";
+  const popupImageUrl = getStat("popup_image_url");
+  const popupLinkUrl = getStat("popup_link_url");
 
   return (
     <PublicLayout>
-      {/* Admission Popup Overlay */}
-      {showPopup && (
+      {/* Dynamic Advertisement Popup Overlay */}
+      {showPopup && popupActive && popupImageUrl && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
           <div className="relative max-w-2xl w-full animate-in zoom-in-95 fade-in duration-300">
             <button
@@ -154,9 +163,17 @@ const Index = () => {
             </button>
             <div
               className="rounded-xl overflow-hidden shadow-2xl cursor-pointer ring-4 ring-primary/20 hover:ring-primary/50 transition-all duration-300"
-              onClick={() => navigate('/admission')}
+              onClick={() => {
+                if (popupLinkUrl) {
+                  if (popupLinkUrl.startsWith('http')) {
+                    window.open(popupLinkUrl, '_blank');
+                  } else {
+                    navigate(popupLinkUrl);
+                  }
+                }
+              }}
             >
-              <img src="/7.jpg" alt="Admission Notice" className="w-full h-auto object-contain bg-white" />
+              <img src={popupImageUrl} alt="Advertisement" className="w-full h-auto object-contain bg-white" />
             </div>
           </div>
         </div>
@@ -236,10 +253,10 @@ const Index = () => {
       <section className="py-12 sm:py-16 bg-yellow-500 text-black">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
-            <AnimatedCounter target={getStat("students")} label="Students" icon={Users} />
-            <AnimatedCounter target={getStat("teachers")} label="Teachers" icon={BookOpen} />
-            <AnimatedCounter target={getStat("years")} label="Years" icon={Clock} />
-            <AnimatedCounter target={getStat("programs")} label="Class Programs" icon={GraduationCap} />
+            <AnimatedCounter target={getStatInt("students")} label="Students" icon={Users} />
+            <AnimatedCounter target={getStatInt("teachers")} label="Teachers" icon={BookOpen} />
+            <AnimatedCounter target={getStatInt("years")} label="Years" icon={Clock} />
+            <AnimatedCounter target={getStatInt("programs")} label="Class Programs" icon={GraduationCap} />
           </div>
         </div>
       </section>

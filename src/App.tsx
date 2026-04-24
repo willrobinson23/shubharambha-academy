@@ -26,6 +26,7 @@ import AdminGallery from "./pages/admin/AdminGallery";
 import AdminTeams from "./pages/admin/AdminTeams";
 import AdminSupportStaff from "./pages/admin/AdminSupportStaff";
 import AdminAchievers from "./pages/admin/AdminAchievers";
+import AdminPopup from "./pages/admin/AdminPopup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -67,6 +68,7 @@ const App = () => (
             <Route path="/admin/teams" element={<AdminTeams />} />
             <Route path="/admin/support-staff" element={<AdminSupportStaff />} />
             <Route path="/admin/achievers" element={<AdminAchievers />} />
+            <Route path="/admin/popup" element={<AdminPopup />} />
             <Route path="/admin/settings" element={<AdminSettings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

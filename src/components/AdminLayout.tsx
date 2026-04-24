@@ -20,6 +20,7 @@ const navItems = [
   { label: "Teams", path: "/admin/teams", icon: Users },
   { label: "Support Staff", path: "/admin/support-staff", icon: Users },
   { label: "Achievers", path: "/admin/achievers", icon: Medal },
+  { label: "Popup Settings", path: "/admin/popup", icon: ImagePlus },
   { label: "Settings", path: "/admin/settings", icon: Settings },
 ];
 
