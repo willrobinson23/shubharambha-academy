@@ -53,7 +53,7 @@ const AdminLogin = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <Label htmlFor="admin-email">Email</Label>
-              <Input id="admin-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="admin@shubharambha.edu.np" />
+              <Input id="admin-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="admin@shubharambha.com" />
             </div>
             <div>
               <Label htmlFor="admin-password">Password</Label>
