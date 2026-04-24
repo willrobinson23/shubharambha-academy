@@ -60,11 +60,11 @@ const AdminLogin = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <Label htmlFor="admin-email">Email</Label>
-              <Input id="admin-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="admin@shubharambha.com" />
+              <Input id="admin-email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
             </div>
             <div>
               <Label htmlFor="admin-password">Password</Label>
-              <Input id="admin-password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" />
+              <Input id="admin-password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
             </div>
             <Button type="submit" className="w-full gap-2" disabled={loading}>
               <Lock className="h-4 w-4" /> {loading ? "Signing in..." : "Sign In"}
