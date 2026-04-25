@@ -62,19 +62,19 @@ const About = () => {
   return (
     <PublicLayout>
       {/* Hero */}
-      <section className="relative mt-16 md:mt-20 min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner">
+      <section className="relative mt-16 md:mt-20 min-h-[30vh] sm:min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner py-8 sm:py-0">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/hero6.png')` }} />
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <div className="flex flex-col items-center text-center">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white drop-shadow-md">
+              <h1 className="text-xl sm:text-3xl md:text-4xl font-display font-bold text-white drop-shadow-md">
                 About <span className="text-primary-foreground drop-shadow-lg">Shubharambha</span> Academy
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl font-display font-semibold text-white/95 drop-shadow-md mt-1">
+              <h2 className="text-sm sm:text-xl md:text-2xl font-display font-semibold text-white/95 drop-shadow-md mt-1">
                 Previously known as <span className="text-primary-foreground drop-shadow-lg" style={{ color: "yellow" }}>Lyceum International Model School</span>
               </h2>
-              <p className="text-white/90 mt-2 max-w-2xl mx-auto text-sm sm:text-base drop-shadow">
+              <p className="text-white/90 mt-2 max-w-2xl mx-auto text-xs sm:text-base drop-shadow px-2 sm:px-0">
                 Established in 2052 B.S., Shubharambha Academy has been a beacon of quality education in Chitwan,
                 nurturing generations of confident, compassionate, and capable leaders.
               </p>
@@ -175,17 +175,17 @@ const About = () => {
             {/* Principal */}
             <ScrollReveal>
               <div className="text-center">
-                <h2 className="text-3xl font-display font-bold mb-6">Principal's Message</h2>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold mb-6">Principal's Message</h2>
                 <div className="h-40 w-40 mx-auto rounded-full overflow-hidden mb-6 border-4 border-primary/20 shadow-lg">
                   <img src="/principal.jpeg" alt="Principal" className="h-full w-full object-cover object-top" />
                 </div>
-                <blockquote className="text-lg text-muted-foreground italic leading-relaxed">
+                <blockquote className="text-sm sm:text-lg text-muted-foreground italic leading-relaxed">
                   "Education is not just about books and exams — it is about building character,
                   fostering curiosity, and empowering every child to discover their unique potential.
                   At Shubharambha Academy, we are committed to creating an environment where every
                   student feels valued, inspired, and ready to take on the world."
                 </blockquote>
-                <p className="mt-6 font-semibold text-foreground text-xl">Mr. Pashupati Sharma Upadhyay</p>
+                <p className="mt-6 font-semibold text-foreground text-lg sm:text-xl">Mr. Pashupati Sharma Upadhyay</p>
                 <p className="text-primary font-medium">Principal, Shubharambha Academy</p>
               </div>
             </ScrollReveal>
@@ -195,16 +195,16 @@ const About = () => {
             {/* Vice Principal */}
             <ScrollReveal delay={0.1}>
               <div className="text-center">
-                <h2 className="text-3xl font-display font-bold mb-6">Vice Principal's Message</h2>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold mb-6">Vice Principal's Message</h2>
                 <div className="h-40 w-40 mx-auto rounded-full overflow-hidden mb-6 border-4 border-primary/20 shadow-lg">
                   <img src="/viceprincipal-1.jpeg" alt="Vice Principal" className="h-full w-full object-cover object-top" />
                 </div>
-                <blockquote className="text-lg text-muted-foreground italic leading-relaxed">
+                <blockquote className="text-sm sm:text-lg text-muted-foreground italic leading-relaxed">
                   "शिक्षा केवल किताबी ज्ञानमा मात्र सीमित छैन, यो असल चरित्र निर्माण र अनुशासनको मार्ग पनि हो।
                   शुभारम्भ एकेडेमीमा हामी विद्यार्थीहरूको सर्वाङ्गीण विकासका लागि सदैव कटिबद्ध छौं। हाम्रा
                   विद्यार्थीहरू भोलिको दिनमा समाज र राष्ट्रको सक्षम नागरिक बनून् भन्ने हाम्रो मुख्य उद्देश्य हो।"
                 </blockquote>
-                <p className="mt-6 font-semibold text-foreground text-xl">Mrs. Bhima K Thapa</p>
+                <p className="mt-6 font-semibold text-foreground text-lg sm:text-xl">Mrs. Bhima K Thapa</p>
                 <p className="text-primary font-medium">Vice Principal, Shubharambha Academy</p>
               </div>
             </ScrollReveal>
@@ -217,7 +217,7 @@ const About = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold">Our <span className="text-primary">Teachers</span></h2>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">Our <span className="text-primary">Teachers</span></h2>
               <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
                 Meet the dedicated professionals who work tirelessly to bring out the best in our students.
               </p>
@@ -274,7 +274,7 @@ const About = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold">Our <span className="text-primary">School Staff</span></h2>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">Our <span className="text-primary">School Staff</span></h2>
               <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
                 The backbone of our academy, ensuring a smooth workflow and ensure safe environment for our students.
               </p>
@@ -330,7 +330,7 @@ const About = () => {
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <h2 className="text-3xl font-display font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-center mb-12">
               Our <span className="text-gold">Achievements</span>
             </h2>
           </ScrollReveal>
@@ -346,7 +346,7 @@ const About = () => {
                     <div className="h-14 w-14 mx-auto rounded-xl bg-gold/10 flex items-center justify-center mb-4">
                       <a.icon className="h-7 w-7 text-gold" />
                     </div>
-                    <h3 className="text-xl font-display font-semibold mb-2">{a.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-display font-semibold mb-2">{a.title}</h3>
                     <p className="text-muted-foreground text-sm">{a.desc}</p>
                   </CardContent>
                 </Card>

@@ -21,15 +21,15 @@ const facilities = [
 
 const Academics = () => (
   <PublicLayout>
-    <section className="relative mt-16 md:mt-20 min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner">
+    <section className="relative mt-16 md:mt-20 min-h-[30vh] sm:min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner py-8 sm:py-0">
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/hero4.jpg')` }} />
       <div className="absolute inset-0 bg-black/60" />
       <div className="container mx-auto px-4 relative z-10 text-center">
         <ScrollReveal>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
             Academic <span className="text-primary-foreground drop-shadow-lg">Programs</span>
           </h1>
-          <p className="text-white/90 mt-4 max-w-2xl mx-auto text-lg drop-shadow">
+          <p className="text-white/90 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-lg drop-shadow px-2 sm:px-0">
             From early childhood to higher secondary, we offer a comprehensive curriculum designed to develop well-rounded individuals.
           </p>
         </ScrollReveal>
@@ -48,7 +48,7 @@ const Academics = () => (
                   </div>
                   <div>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <h3 className="text-xl font-display font-semibold">{p.title}</h3>
+                      <h3 className="text-base sm:text-xl font-display font-semibold">{p.title}</h3>
                       <span className="text-xs bg-gold/10 text-gold font-semibold px-3 py-1 rounded-full">{p.grades}</span>
                     </div>
                     <p className="text-muted-foreground mt-2 leading-relaxed">{p.desc}</p>
@@ -64,7 +64,7 @@ const Academics = () => (
     <section className="py-12 sm:py-16 bg-secondary/50">
       <div className="container mx-auto px-4">
         <ScrollReveal>
-          <h2 className="text-3xl font-display font-bold text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-center mb-12">
             Our <span className="text-gold">Facilities</span>
           </h2>
         </ScrollReveal>
@@ -76,7 +76,7 @@ const Academics = () => (
                   <div className="h-14 w-14 mx-auto rounded-xl bg-gold/10 flex items-center justify-center mb-4">
                     <f.icon className="h-7 w-7 text-gold" />
                   </div>
-                  <h3 className="text-xl font-display font-semibold mb-2">{f.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-display font-semibold mb-2">{f.title}</h3>
                   <p className="text-muted-foreground text-sm">{f.desc}</p>
                 </CardContent>
               </Card>

@@ -43,14 +43,14 @@ const AnimatedCounter = ({ target, label, icon: Icon }: { target: number; label:
   }, [target]);
 
   return (
-    <div ref={ref} className="flex justify-center py-4 sm:py-6 px-8 sm:px-12 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-md shadow-lg hover:-translate-y-1 hover:bg-white/20 transition-all duration-300">
-      <div className="flex items-center gap-3 sm:gap-4">
-        {Icon && <Icon className="h-8 w-8 sm:h-10 sm:w-10 text-primary-foreground/90 stroke-[2]" />}
+    <div ref={ref} className="flex justify-center py-3 sm:py-6 px-4 sm:px-12 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-md shadow-lg hover:-translate-y-1 hover:bg-white/20 transition-all duration-300">
+      <div className="flex items-center gap-2 sm:gap-4">
+        {Icon && <Icon className="h-6 w-6 sm:h-10 sm:w-10 text-primary-foreground/90 stroke-[2]" />}
         <div className="flex flex-col items-start">
-          <div className="text-3xl flex items-baseline sm:text-4xl md:text-5xl font-bold text-primary-foreground font-display leading-none">
-            {count}<span className="text-2xl sm:text-3xl ml-1 leading-none">+</span>
+          <div className="text-xl flex items-baseline sm:text-4xl md:text-5xl font-bold text-primary-foreground font-display leading-none">
+            {count}<span className="text-lg sm:text-3xl ml-0.5 sm:ml-1 leading-none">+</span>
           </div>
-          <div className="text-primary-foreground/90 mt-1 font-medium text-sm sm:text-base whitespace-nowrap">{label}</div>
+          <div className="text-primary-foreground/90 mt-0.5 sm:mt-1 font-medium text-xs sm:text-base whitespace-nowrap">{label}</div>
         </div>
       </div>
     </div>
@@ -180,7 +180,7 @@ const Index = () => {
       )}
 
       {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center mt-16 md:mt-20 pt-16 pb-16 overflow-hidden bg-zinc-900">
+      <section className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center mt-16 md:mt-20 pt-10 sm:pt-16 pb-10 sm:pb-16 overflow-hidden bg-zinc-900">
         {/* Background Slide Carousel */}
         <div
           className="absolute inset-0 flex transition-transform duration-1000 ease-in-out"
@@ -199,14 +199,14 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl px-1 sm:px-0">
             <ScrollReveal>
-              <span className="inline-block bg-gold/90 text-black font-semibold text-xs px-3 py-1 sm:text-sm sm:px-4 sm:py-1.5 rounded-full mb-3 md:mb-6 shadow-lg">
+              <span className="inline-block bg-gold/90 text-black font-semibold text-[11px] px-2.5 py-1 sm:text-sm sm:px-4 sm:py-1.5 rounded-full mb-3 md:mb-6 shadow-lg">
                 📚 Admission Open 2083 | +2 Rolling out soon
               </span>
             </ScrollReveal>
             <ScrollReveal delay={0.05}>
-              <h2 className="text-[10px] sm:text-sm md:text-xl lg:text-3xl font-display font-medium mb-3 sm:mb-4 text-white/90 drop-shadow-md whitespace-nowrap">
+              <h2 className="text-[11px] sm:text-sm md:text-xl lg:text-3xl font-display font-medium mb-2 sm:mb-4 text-white/90 drop-shadow-md">
                 Previously known as{" "}
                 <span className="bg-gradient-to-r from-yellow-200 via-sky-200 to-gold bg-[length:200%_auto] text-transparent bg-clip-text animate-gradient-x font-bold drop-shadow-[0_2px_15px_rgba(255,215,0,0.4)]">
                   Lyceum International Model School
@@ -214,32 +214,32 @@ const Index = () => {
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white leading-tight drop-shadow-md">
+              <h1 className="text-[22px] sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white leading-tight drop-shadow-md">
                 Where Every Child's{" "}
                 <span className="text-primary-foreground drop-shadow-lg">Journey</span>{" "}
                 <span className="text-gold drop-shadow-lg">Begins</span>
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed drop-shadow">
+              <p className="mt-3 sm:mt-6 text-[13px] sm:text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed drop-shadow">
                 At Shubharambha Academy, we believe every child deserves a strong foundation.
                 Join a community where curiosity thrives, values are nurtured, and futures are built.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-4 mt-4 sm:mt-8">
                 <Link to="/admission">
-                  <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 flex items-center justify-center sm:px-8 gap-2 shadow-lg">
-                    <GraduationCap className="h-5 w-5" /> Apply Now
+                  <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-sm sm:text-lg px-5 flex items-center justify-center sm:px-8 gap-2 shadow-lg h-10 sm:h-11">
+                    <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" /> Apply Now
                   </Button>
                 </Link>
                 <a href="https://shubharambhateacherdashboard.netlify.app/#/guardianLogin" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg">
-                    <Shield className="h-5 w-5" /> Guardian's Portal
+                  <Button size="lg" className="w-full sm:w-auto text-sm sm:text-lg px-5 sm:px-8 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg h-10 sm:h-11">
+                    <Shield className="h-4 w-4 sm:h-5 sm:w-5" /> Guardian's Portal
                   </Button>
                 </a>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 flex items-center justify-center bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-sm sm:text-lg px-5 sm:px-8 flex items-center justify-center bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm h-10 sm:h-11">
                     Visit School
                   </Button>
                 </Link>
@@ -250,9 +250,9 @@ const Index = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 sm:py-16 bg-yellow-500 text-black">
+      <section className="py-8 sm:py-16 bg-yellow-500 text-black">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 max-w-6xl mx-auto">
             <AnimatedCounter target={getStatInt("students")} label="Students" icon={Users} />
             <AnimatedCounter target={getStatInt("teachers")} label="Teachers" icon={BookOpen} />
             <AnimatedCounter target={getStatInt("years")} label="Years" icon={Clock} />
@@ -277,14 +277,14 @@ const Index = () => {
 
             <div className="flex-1 space-y-6">
               <ScrollReveal delay={0.1}>
-                <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-bold">
+                <h2 className="text-xl sm:text-4xl md:text-5xl font-display font-bold">
                   Welcome to <br />
-                  <span className="text-primary text-3xl sm:text-5xl md:text-6xl">Shubharambha</span> Academy
+                  <span className="text-primary text-2xl sm:text-5xl md:text-6xl">Shubharambha</span> Academy
                 </h2>
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <p className="text-muted-foreground leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-lg">
                   Providing a nurturing environment for your child's holistic development since our inception.
                   We believe in building confident, responsible, and capable leaders of tomorrow through
                   innovative learning and strong moral foundations.
@@ -470,7 +470,7 @@ const Index = () => {
               >
                 <CarouselContent className={topAchievers.length < 4 ? "md:justify-center -ml-2 md:-ml-4" : "-ml-2 md:-ml-4"}>
                   {topAchievers.map((achiever, i) => (
-                    <CarouselItem key={achiever.id} className="pl-2 md:pl-4 basis-[85%] md:basis-1/2 lg:basis-1/4">
+                    <CarouselItem key={achiever.id} className="pl-2 md:pl-4 basis-[70%] md:basis-1/2 lg:basis-1/4">
                       <ScrollReveal delay={Math.min(i, 4) * 0.1} className="h-full">
                         <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 group border-border/50 flex flex-col">
                           <div className="aspect-square md:aspect-[4/5] w-full overflow-hidden bg-muted relative shrink-0">
@@ -532,10 +532,10 @@ const Index = () => {
                         <Card className="hover:shadow-xl transition-shadow duration-300 h-full border-border/50">
                           <CardContent className="p-6 md:p-8 flex flex-col h-full">
                             <Quote className="h-10 w-10 text-gold/30 mb-4 shrink-0" />
-                            <p className="text-muted-foreground italic leading-relaxed text-lg">"{t.quote}"</p>
+                            <p className="text-muted-foreground italic leading-relaxed text-sm sm:text-lg">"{t.quote}"</p>
                             <div className="mt-3 pt-3 md:mt-6 md:pt-6 border-t flex items-center justify-between shrink-0">
                               <div>
-                                <p className="font-semibold text-foreground text-lg">{t.name}</p>
+                                <p className="font-semibold text-foreground text-base sm:text-lg">{t.name}</p>
                                 <p className="text-sm text-primary font-medium capitalize mt-0.5">{t.role}</p>
                               </div>
                             </div>

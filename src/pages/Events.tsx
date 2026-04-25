@@ -18,15 +18,15 @@ const Events = () => {
 
   return (
     <PublicLayout>
-      <section className="relative mt-16 md:mt-20 min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner">
+      <section className="relative mt-16 md:mt-20 min-h-[30vh] sm:min-h-[40vh] flex items-center justify-center overflow-hidden bg-zinc-900 shadow-inner py-8 sm:py-0">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/hero3.jpg')` }} />
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <ScrollReveal>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
               School <span className="text-primary-foreground drop-shadow-lg">Events</span>
             </h1>
-            <p className="text-white/90 mt-4 max-w-2xl mx-auto text-lg drop-shadow">
+            <p className="text-white/90 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-lg drop-shadow px-2 sm:px-0">
               Stay updated with all our latest programs, celebrations, and activities.
             </p>
           </ScrollReveal>

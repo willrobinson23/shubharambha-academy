@@ -17,7 +17,7 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <GraduationCap className="h-7 w-7 text-gold" />
-              <span className="font-display text-xl font-bold">Shubharambha Academy</span>
+              <span className="font-display text-lg sm:text-xl font-bold">Shubharambha Academy</span>
             </div>
             <p className="text-sm opacity-75 leading-relaxed mb-6">
               Nurturing young minds with quality education, strong values, and a commitment to excellence since 2052 B.S.
@@ -73,7 +73,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />
-                <span>academyshubharambha52@gmail.com</span>
+                <span className="break-all sm:break-normal">academyshubharambha52@gmail.com</span>
               </li>
             </ul>
           </div>
