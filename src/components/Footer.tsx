@@ -10,6 +10,15 @@ export const Footer = () => {
     document.body.removeChild(link);
   };
 
+  const handleSoftwareDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Shubharambha Software Setup.exe"; // Path to your software executable file
+    link.download = "Shubharambha Software Setup.exe"; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <footer className="bg-foreground text-background">
       <div className="container mx-auto px-4 py-12 md:py-16">
@@ -88,6 +97,18 @@ export const Footer = () => {
           >
             <Download className="h-5 w-5" />
             Download School App
+          </button>
+        </div>
+
+        {/* Desktop-only Download Software Button */}
+        <div className="hidden md:flex justify-center mt-8">
+          <button
+            id="download-software-btn"
+            onClick={handleSoftwareDownload}
+            className="w-full max-w-md flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-primary to-orange-500 text-white font-semibold text-base shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+          >
+            <Download className="h-5 w-5" />
+            Download School Software
           </button>
         </div>
 
