@@ -3,8 +3,8 @@ import { GraduationCap, Phone, Mail, MapPin, Facebook, Download } from "lucide-r
 export const Footer = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/app-normal-release.apk"; // Path to your APK file in the public folder
-    link.download = "app-normal-release.apk"; // Path to your APK file in the public folder
+    link.href = "/Shubharambha-School.apk"; // Path to your APK file in the public folder
+    link.download = "Shubharambha-School.apk"; // Path to your APK file in the public folder
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
