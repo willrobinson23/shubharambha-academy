@@ -368,7 +368,7 @@ const Index = () => {
             <ScrollReveal>
               <div className="flex items-center justify-between mb-12">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">Upcoming <span className="text-primary">Events</span></h2>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">Recent <span className="text-primary">Events</span></h2>
                   <p className="text-muted-foreground mt-2">Stay updated with our latest activities and programs.</p>
                 </div>
                 <Link to="/events" className="hidden md:block">
